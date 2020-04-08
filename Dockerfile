@@ -1,3 +1,5 @@
-FROM openjdk:latest
-COPY ./target/config-server-1.0.jar config-server-1.0.jar
-CMD ["java","-jar","config-server-1.0.jar"]
+FROM maven:3.5-jdk-8-alpine
+USER root
+COPY . app/
+WORKDIR /app
+CMD ["mvn","spring-boot:run"]
